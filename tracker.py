@@ -15,7 +15,9 @@ class loadStat(object):
 
     def val(self):
         r = json.loads(requests.get(cb + self.disp_type).text)
-        return("\033[1m" + self.disp_type.title() + ": $" + r['subtotal']['amount'] + "\033[0m ($" + r['total']['amount'] + " after fees)")
+        return("\033[1m" + self.disp_type.title() + ": $"
+               + r['subtotal']['amount'] + "\033[0m ($" + r['total']['amount']
+               + " after fees)")
 
 
 def displayTicker():
