@@ -1,6 +1,6 @@
 coinbase-tracker
 ======
-A console Coinbase exchange tracker written in Python.
+A minimal console ticker for Coinbase exchange rates, written in Python.
 
 Todo
 ------------
