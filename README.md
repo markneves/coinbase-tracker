@@ -7,3 +7,7 @@ Screenshot
 ------------
 ![Screenshot](http://i.imgur.com/ooXJ5nD.png)
 
+
+### Usage
+
+        $ ./tracker.py [btc amount]

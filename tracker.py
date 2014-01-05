@@ -1,12 +1,18 @@
 #!/usr/bin/python
 # [very simple] Coinbase Tracker v0.3 - powered by Python3
 # by Mark Neves - mneves@gmail.com
+#
+# Notes: Conformed to PEP8, which is why there are odd line-breaks now
+#
+# Usage: ./tracker.py [btc amount]
+#
 import json
 import requests
 import threading
 import sys
 cb = "https://coinbase.com/api/v1/prices/"
-q = {'qty': '1'}  # Default qty.  Will take user input soon!
+qty = 1 if len(sys.argv) != 2 else int(sys.argv[1])
+q = {'qty': qty}
 
 
 class loadStat(object):
@@ -18,9 +24,8 @@ class loadStat(object):
     def val(self):
         arrow = "  "
         headers = {'content-type': 'application/json'}
-        r = json.loads(
-            requests.get(cb + self.disp_type, data=json.dumps(q), 
-                headers=headers).text)
+        r = json.loads(requests.get(cb + self.disp_type, data=json.dumps(q),
+                                    headers=headers).text)
         if(loadStat.last[self.disp_type] and loadStat.last[self.disp_type]
                 != r['subtotal']['amount']):
             arrow = "\033[92m ▴\033[0m" if loadStat.last[self.disp_type] < r[
@@ -28,10 +33,9 @@ class loadStat(object):
         else:
             loadStat.last[self.disp_type] = r['subtotal']['amount']
 
-        return("\033[1m" + self.disp_type.title() + ": $"
-               + r['subtotal']['amount'] + arrow +
-               "\033[0m ($" + r['total']['amount']
-               + " with fees)")
+        return("\033[1m" + self.disp_type.title() + ": ${:,.2f}".format(float(
+            r['subtotal']['amount'])) + arrow + "\033[0m (${:,.2f}"
+            .format(float(r['total']['amount'])) + " with fees)")
 
 
 def displayTicker():
