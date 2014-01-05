@@ -1,11 +1,12 @@
 #!/usr/bin/python
-# [very simple] Coinbase Tracker v0.2
+# [very simple] Coinbase Tracker v0.3 - powered by Python3
 # by Mark Neves - mneves@gmail.com
 import json
 import requests
 import threading
 import sys
 cb = "https://coinbase.com/api/v1/prices/"
+q = {'qty': '1'}  # Default qty.  Will take user input soon!
 
 
 class loadStat(object):
@@ -16,7 +17,10 @@ class loadStat(object):
 
     def val(self):
         arrow = "  "
-        r = json.loads(requests.get(cb + self.disp_type).text)
+        headers = {'content-type': 'application/json'}
+        r = json.loads(
+            requests.get(cb + self.disp_type, data=json.dumps(q), 
+                headers=headers).text)
         if(loadStat.last[self.disp_type] and loadStat.last[self.disp_type]
                 != r['subtotal']['amount']):
             arrow = "\033[92m ▴\033[0m" if loadStat.last[self.disp_type] < r[
@@ -36,6 +40,7 @@ def displayTicker():
                      + "  ¦  " + loadStat('sell').val())
     sys.stdout.flush()
 
-print("\nCoinbase prices (per 1 Bitcoin):")
+btc = int(q['qty'])
+print("\nCoinbase prices (amount: %d Bitcoin%s)" % (btc, "s"[btc == 1:]))
 print("-" * 74)
 displayTicker()

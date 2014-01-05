@@ -1,13 +1,9 @@
 coinbase-tracker
 ======
-A minimal console ticker for Coinbase exchange rates, written in Python.
+A minimal console ticker for Coinbase exchange rates, written in Python 3.3.
 
 
 Screenshot
 ------------
 ![Screenshot](http://i.imgur.com/ooXJ5nD.png)
 
-
-Todo
-------------
-1. Take [optional] input for set amount of Bitcoins (makes exchange rate vary)
