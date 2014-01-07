@@ -10,9 +10,17 @@ import json
 import requests
 import threading
 import sys
+import argparse
+
 cb = "https://coinbase.com/api/v1/prices/"
-qty = 1 if len(sys.argv) != 2 else int(sys.argv[1])
-q = {'qty': qty}
+parser = argparse.ArgumentParser()
+parser.add_argument('-r', '--refresh', default=8.0, metavar='seconds',
+                    type=int,
+                    help='The refresh rate that Coinbase prices are polled')
+parser.add_argument('-q', '--quantity', default=1, metavar='btc amount', 
+                    type=int, help='The quantity of Bitcoins to check')
+i_ = parser.parse_args()
+q = {'qty': i_.quantity}
 
 
 class loadStat(object):
@@ -39,7 +47,7 @@ class loadStat(object):
 
 
 def displayTicker():
-    threading.Timer(10.0, displayTicker).start()
+    threading.Timer(i_.refresh, displayTicker).start()
     sys.stdout.write("\r" + loadStat('buy').val()
                      + "  ¦  " + loadStat('sell').val())
     sys.stdout.flush()
