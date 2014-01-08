@@ -20,7 +20,7 @@ parser.add_argument('-r', '--refresh', default=8.0, metavar='seconds',
 parser.add_argument('-q', '--quantity', default=1, metavar='btc amount', 
                     type=int, help='The quantity of Bitcoins to check')
 i_ = parser.parse_args()
-q = {'qty': i_.quantity}
+q = {'qty': i_.quantity, 'currency': 'USD'} # only currency on API right now
 
 
 class loadStat(object):

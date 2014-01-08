@@ -8,14 +8,16 @@ Screenshot
 ![Screenshot](http://i.imgur.com/ooXJ5nD.png)
 
 
-### Usage
+Usage
+------------
 
         $ ./tracker.py [-r seconds] [-q btc amount] [-h]
         
-- -r (--refresh) allows you to set the refresh rate (in seconds) for Coinbase prices.  Default is 8.
-- -q (--quantity) controls the amount of Bitcoin to query the price on.  Default is 1.
+- -r (*--refresh*) allows you to set the refresh rate (in seconds) for Coinbase prices.  Default is 8.
+- -q (*--quantity*) controls the amount of Bitcoin to query the price on.  Default is 1.
+
 
 Todo
 ------------
-1. Add ability to see price in other currancies
+1. ~~Add ability to see price in other currencies~~  This is ready to be implemented as soon as Coinbase's API supports other currencies.  
 2. Daemon mode (to enable fun things like displaying the price in your command prompt)
