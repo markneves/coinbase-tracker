@@ -21,3 +21,4 @@ Todo
 ------------
 1. ~~Add ability to see price in other currencies~~  This is ready to be implemented as soon as Coinbase's API supports other currencies.  
 2. Daemon mode (to enable fun things like displaying the price in your command prompt)
+3. Show the spot history

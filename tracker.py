@@ -1,10 +1,10 @@
 #!/usr/bin/python
-# [very simple] Coinbase Tracker v0.3 - powered by Python3
+# [very simple] Coinbase Tracker v0.4 - powered by Python 3.3
 # by Mark Neves - mneves@gmail.com
 #
 # Notes: Conformed to PEP8, which is why there are odd line-breaks now
 #
-# Usage: ./tracker.py [btc amount]
+# Usage: ./tracker.py [-r seconds] [-q btc amount] [-h]
 #
 import json
 import requests
